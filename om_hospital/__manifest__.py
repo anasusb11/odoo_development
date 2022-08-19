@@ -27,7 +27,9 @@
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+
+    # add module in apps list
+    'installable': True,
+    'auto_install': False,
+    'application': True, 
 }
