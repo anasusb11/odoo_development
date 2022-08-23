@@ -25,10 +25,33 @@
                 <field name="name" />
                 <field name="age" />
                 <field name="gender" />
+                <field name="note" />
             </tree>
         </field>
     </record>
 
+    <record id="hospital_patient_view_search" model="ir.ui.view">
+        <field name="name">hospital.patient.view.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Patient">
+
+                <!-- filter when typing -->
+                <field name="name" />
+                <field name="note" />
+
+                <!-- Filter default -->
+                <filter name="male" string="Male" domain="[('gender', '=', 'male')]" />
+                <filter name="female" string="Female" domain="[('gender', '=', 'female')]" />
+
+                <!-- Filter Group By -->
+                <group expand="1" string="Group By">
+                    <filter name="gender" string="Gender" context="{'group_by': 'gender'}" />
+                    <filter name="name" string="Patient Name" context="{'group_by': 'name'}" />
+                </group>
+            </search>
+        </field>
+    </record>
 
     <record id="patient_action" model="ir.actions.act_window">
         <field name="name">Patients</field>
