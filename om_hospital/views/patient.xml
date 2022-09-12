@@ -14,6 +14,7 @@
                 </header>
                 <sheet>
                     <group string="Identity" col="4">
+                        <field name="partner_id" />
                         <field name="name" />
                         <field name="gender" />
                         <field name="age" />
@@ -35,11 +36,12 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="partner_id" />
                 <field name="name" />
                 <field name="age" />
                 <field name="gender" />
                 <field name="note" />
-                <field name="state" />
+                <field name="state" widget="badge"/>
             </tree>
         </field>
     </record>
