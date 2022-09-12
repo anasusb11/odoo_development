@@ -27,6 +27,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/patient.xml',
+        'views/kids.xml',
         'views/menuitems.xml',
     ],
     # only loaded in demonstration mode
