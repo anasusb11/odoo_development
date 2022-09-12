@@ -19,11 +19,13 @@ class HospitalPatient(models.Model):
         ('confirm', 'Confirmed'),
         ('cancel', 'Cancelled'),
         ('done', 'Done')], default='draft', string="Status")
+    ref = fields.Char(default="New", readonly=True, string="Sequence Code")
 
     @api.model
     def create(self, vals):
         if not vals.get('note'):
             vals['note'] = 'New Patient'
+            vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
         res = super(HospitalPatient, self).create(vals)
         return res
         
