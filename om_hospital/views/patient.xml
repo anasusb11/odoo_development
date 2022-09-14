@@ -21,7 +21,8 @@
                         <field name="name" />
                         <field name="gender" />
                         <field name="age" />
-                        <field name="note" />
+                        <field name="note" invisible="context.get('hide_note')"/>
+                        <field name="active" />
                     </group>
                 </sheet>
                 <div class="o_attachment_preview"/>
@@ -43,8 +44,11 @@
                 <field name="name" />
                 <field name="age" />
                 <field name="gender" />
-                <field name="note" />
+                <field name="note" optional="hide"/>
                 <field name="state" widget="badge"/>
+                <field name="active"/>
+
+
             </tree>
         </field>
     </record>
@@ -110,8 +114,8 @@
         <field name="name">Patients</field>
         <field name="res_model">hospital.patient</field>
         <field name="view_mode">tree,form,kanban</field>
-        <field name="domain">[]</field>
-        <field name="context">{'search_default_male': 1, 'search_default_gender': 1}</field>
+        <field name="domain">[('active', '=', 'True')]</field>
+        <field name="context">{'search_default_male': 1, 'search_default_gender': 1, 'default_active': 1, 'hide_note': 1}</field>
         <field name="help" type="html">
             <p name="o_view_nocontent_smiling_face">
             Create your first data patient!

@@ -20,6 +20,7 @@ class HospitalPatient(models.Model):
         ('cancel', 'Cancelled'),
         ('done', 'Done')], default='draft', string="Status")
     ref = fields.Char(default="New", readonly=True, string="Sequence Code")
+    active = fields.Boolean('Active')
 
     @api.model
     def create(self, vals):
