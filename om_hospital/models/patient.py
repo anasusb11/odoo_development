@@ -8,7 +8,7 @@ class HospitalPatient(models.Model):
 
     partner_id = fields.Many2one('res.partner', string='Partner')
     name = fields.Char('Name', required=True, tracking=True)
-    age = fields.Char('Age')
+    age = fields.Integer('Age')
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')
