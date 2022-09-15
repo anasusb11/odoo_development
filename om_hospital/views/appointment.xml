@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_appointment_view_form" model="ir.ui.view">
+        <field name="name">hospital.appointment.view.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointment">
+                <header>
+                    <button string="Confirm" name="action_confirm" confirm="Are you sure that you need confirm?" type="object" class="oe_highlight" states="draft"/>
+                    <button string="Set to Draft" name="action_draft" type="object" states="confirm"/>
+                    <button string="Cancel" name="action_cancel" type="object" states="confirm"/>
+                    <button string="Done" name="action_done" type="object" class="oe_highlight" states="confirm"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <field name="patient_id" />
+                        <field name="age" />
+                    </group>
+                    <group>
+                        <field name="date_appointment" />
+                        <field name="date_checkup" />
+                        <field name="note"/>
+                    </group>
+                </sheet>
+                <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_appointment_view_tree" model="ir.ui.view">
+        <field name="name">hospital.appointment.view.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="patient_id" />
+                <field name="date_appointment" />
+                <field name="date_checkup" />
+                <field name="note" optional="hide"/>
+                <field name="state" widget="badge"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_appointment_view_search" model="ir.ui.view">
+        <field name="name">hospital.appointment.view.search</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Appointment">
+
+                <!-- filter when typing -->
+                <field name="name" />
+                <field name="patient_id" />
+
+
+                <!-- Filter Group By -->
+                <group expand="1" string="Group By">
+                    <filter name="name" string="Appointment Name" context="{'group_by': 'name'}" />
+                    <filter name="patient_id" string="Patient" context="{'group_by': 'patient_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="appointment_action" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+            Create your first data Appointment!
+            </p>
+        </field>
+    </record>
+
+</odoo>
