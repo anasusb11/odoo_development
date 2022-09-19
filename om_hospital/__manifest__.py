@@ -30,6 +30,7 @@
         'views/patient.xml',
         'views/kids.xml',
         'views/appointment.xml',
+        'views/doctor.xml',
         'views/menuitems.xml',
     ],
     # only loaded in demonstration mode

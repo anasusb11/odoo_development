@@ -22,7 +22,7 @@ class HospitalPatient(models.Model):
     ref = fields.Char(default="New", readonly=True, string="Sequence Code")
     active = fields.Boolean('Active')
     appointment_count = fields.Integer(compute='_compute_appointment_count', string='Appointment Count')
-    
+    img_patient = fields.Binary('Photo Patient')
     def _compute_appointment_count(self):
         for rec in self:
             # print("============================", rec.id)
