@@ -15,8 +15,12 @@ class HospitalAppointment(models.Model):
         ('cancel', 'Cancelled'),
         ('done', 'Done')], default='draft', string="Status")
     date_appointment = fields.Date('Date Appointment')
-    age = fields.Integer('Age')
+    age = fields.Integer('Age', related='patient_id.age')
     date_checkup = fields.Date('Checkup Time')
+    gender = fields.Selection([
+        ('male', 'Male'),
+        ('female', 'Female')
+    ], string='Gender')
     @api.model
     def create(self, vals):
         if not vals.get('note'):
@@ -24,6 +28,10 @@ class HospitalAppointment(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
         res = super(HospitalAppointment, self).create(vals)
         return res
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        self.gender = self.patient_id.gender
+        
         
     def action_draft(self):
         self.write ({'state' : 'draft'})
