@@ -21,6 +21,13 @@ class HospitalPatient(models.Model):
         ('done', 'Done')], default='draft', string="Status")
     ref = fields.Char(default="New", readonly=True, string="Sequence Code")
     active = fields.Boolean('Active')
+    appointment_count = fields.Integer(compute='_compute_appointment_count', string='Appointment Count')
+    
+    def _compute_appointment_count(self):
+        for rec in self:
+            # print("============================", rec.id)
+            appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)])
+            self.appointment_count = appointment_count
 
     @api.model
     def create(self, vals):
@@ -29,7 +36,6 @@ class HospitalPatient(models.Model):
             vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
         res = super(HospitalPatient, self).create(vals)
         return res
-        
     def action_draft(self):
         self.write ({'state' : 'draft'})
 
