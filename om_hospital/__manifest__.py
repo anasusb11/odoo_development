@@ -22,8 +22,9 @@
 
     # always loaded
     'data': [
-        'data/data_sequence.xml',
         'security/ir.model.access.csv',
+        'data/data_sequence.xml',
+        'wizard/create_appointment_view.xml',
         'views/views.xml',
         'views/templates.xml',
         'views/patient.xml',
