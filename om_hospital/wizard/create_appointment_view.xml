@@ -10,7 +10,8 @@
                     <field name="patient_id" />
                 </group>
                 <footer>
-                    <button name="action_create_appointment" string="Submit" type="object" class="btn-primary"/>
+                    <button name="action_create_appointment" string="Create" type="object" class="btn-primary"/>
+                    <button name="action_view_appointment" string="View Appointment" type="object" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
