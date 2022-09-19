@@ -9,7 +9,7 @@
         <menuitem id="hospital_kids_menu" name="Kids" action="kids_action" parent="patient_root" sequence="15"/>
         <menuitem id="appointment_root" name="Appointment" parent="hospital_root" sequence="10"/>
         <menuitem id="hospital_appointment_menu" name="Appointments" parent="appointment_root" action="appointment_action" sequence="10"/>
-        <menuitem id="create_appointment_wizard" name="Crate Appointment" parent="appointment_root" action="create_appointment_wizard_action" sequence="15"/>
+        <menuitem id="create_appointment_wizard" name="Create Appointment" parent="appointment_root" action="create_appointment_wizard_action" sequence="15"/>
 
 
     </data>
