@@ -28,6 +28,13 @@ class HospitalAppointment(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
         res = super(HospitalAppointment, self).create(vals)
         return res
+
+    @api.model
+    def default_get(self, fields):
+        vals = super(HospitalAppointment, self).default_get(fields)
+        vals['note'] = "Patient note"
+        return vals
+        
     @api.onchange('patient_id')
     def _onchange_patient_id(self):
         self.gender = self.patient_id.gender
