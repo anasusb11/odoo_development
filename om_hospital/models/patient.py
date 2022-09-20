@@ -8,6 +8,7 @@ class HospitalPatient(models.Model):
     _order = 'name ASC'
         
     partner_id = fields.Many2one('res.partner', string='Partner')
+    appointment_line = fields.One2many('hospital.appointment', 'patient_id', string='Appointment Lines')
     name = fields.Char('Name', required=True, tracking=True)
     age = fields.Integer('Age')
     gender = fields.Selection([

@@ -3,6 +3,4 @@ access_hospital_patient_user,hospital.patient,model_hospital_patient,base.group_
 access_hospital_appointment_user,hospital.appointment,model_hospital_appointment,base.group_user,1,1,1,1
 access_create_appointment_wizard_user,undefined.create.appointment.wizard,model_create_appointment_wizard,base.group_user,1,1,1,1
 access_hospital_doctor_user,undefined.hospital.doctor,model_hospital_doctor,base.group_user,1,1,1,1
-access_appointment_prescription_lines_user,undefined.appointment.prescription.lines,model_appointment_prescription_lines,base.group_user,1,1,1,1
 access_appointment_medicine_lines_user,undefined.appointment.medicine.lines,model_appointment_medicine_lines,base.group_user,1,1,1,1
-access_appointment_info_lines_user,undefined.appointment.info.lines,model_appointment_info_lines,base.group_user,1,1,1,1

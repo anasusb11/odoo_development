@@ -19,6 +19,18 @@
                         <field name="note" invisible="context.get('hide_note')"/>
                         <field name="active" />
                     </group>
+                    <notebook>
+                        <page string="Appointment Lines">
+                            <field name="appointment_line">
+                                <tree editable="bottom" create="0" delete="0">
+                                    <field name="date_appointment" />
+                                    <field name="date_checkup" />
+                                    <field name="note" optional="hide"/>
+                                    <field name="state" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="o_attachment_preview"/>
                 <div class="oe_chatter">

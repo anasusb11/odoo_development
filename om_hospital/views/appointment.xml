@@ -29,11 +29,9 @@
                     </group>
                     <notebook>
                         <page string="Doctor Prescription">
-                            <field name="prescription_line">
-                                <tree>
-                                    <field name="prescription" />
-                                </tree>
-                            </field>
+                            <group>
+                                <field name="prescription" />
+                            </group>
                         </page>
                         <page string="Medicine">
                             <field name="medicine_line">
@@ -44,11 +42,9 @@
                             </field>
                         </page>
                         <page string="Other Information">
-                            <field name="info_line">
-                                <tree>
-                                    <field name="note" />
-                                </tree>
-                            </field>
+                            <group>
+                                <field name="note" />
+                            </group>
                         </page>
                     </notebook>
                 </sheet>
