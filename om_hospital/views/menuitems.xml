@@ -3,7 +3,7 @@
     <data>
 
 
-        <menuitem id="hospital_root" name="Hospital" sequence="10"/>
+        <menuitem id="hospital_root" name="Hospital" sequence="10" web_icon="om_hospital,static/description/hospital.png"/>
         <menuitem id="patient_root" name="Patient" parent="hospital_root" sequence="5"/>
         <menuitem id="doctor_root" name="Doctor" parent="hospital_root" sequence="15" action="doctor_action"/>
         <menuitem id="hospital_patient_menu" name="Patient" action="patient_action" parent="patient_root" sequence="10"/>

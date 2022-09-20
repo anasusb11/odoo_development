@@ -14,11 +14,6 @@ class HospitalPatient(models.Model):
         ('female', 'Female')
     ], string='Gender')
     note = fields.Text('Description', tracking=True)
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('confirm', 'Confirmed'),
-        ('cancel', 'Cancelled'),
-        ('done', 'Done')], default='draft', string="Status")
     ref = fields.Char(default="New", readonly=True, string="Sequence Code")
     active = fields.Boolean('Active')
     appointment_count = fields.Integer(compute='_compute_appointment_count', string='Appointment Count')
@@ -36,14 +31,3 @@ class HospitalPatient(models.Model):
             vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
         res = super(HospitalPatient, self).create(vals)
         return res
-    def action_draft(self):
-        self.write ({'state' : 'draft'})
-
-    def action_confirm(self):
-        self.write ({'state' : 'confirm'})
-
-    def action_cancel(self):
-        self.write ({'state' : 'cancel'})
-
-    def action_done(self):
-        self.write ({'state' : 'done'})

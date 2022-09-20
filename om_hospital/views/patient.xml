@@ -5,13 +5,6 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form string="Patient">
-                <header>
-                    <button string="Confirm" name="action_confirm" confirm="Are you sure that you need confirm?" type="object" class="oe_highlight" states="draft"/>
-                    <button string="Set to Draft" name="action_draft" type="object" states="confirm"/>
-                    <button string="Cancel" name="action_cancel" type="object" states="confirm"/>
-                    <button string="Done" name="action_done" type="object" class="oe_highlight" states="confirm"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
-                </header>
                 <sheet>
                     <field name="img_patient" widget="image" class="oe_avatar"/>
                     <h1>
@@ -46,9 +39,7 @@
                 <field name="name" />
                 <field name="age" />
                 <field name="gender" />
-                <!-- <field name="appointment_count" /> -->
                 <field name="note" optional="hide"/>
-                <field name="state" widget="badge"/>
                 <field name="active"/>
 
 

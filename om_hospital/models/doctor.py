@@ -13,11 +13,6 @@ class HospitalDoctor(models.Model):
         ('female', 'Female')
     ], string='Gender')
     note = fields.Text('Description', tracking=True)
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('confirm', 'Confirmed'),
-        ('cancel', 'Cancelled'),
-        ('done', 'Done')], default='draft', string="Status")
     ref = fields.Char(default="New", readonly=True, string="Sequence Code")
     img_doctor = fields.Binary('Photo Doctor')
 
