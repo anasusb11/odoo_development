@@ -4,7 +4,7 @@ class HospitalDoctor(models.Model):
     _name = 'hospital.doctor'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Hospital Doctor'
-    
+    _rec_name = 'name'
 
     name = fields.Char('Name', required=True, tracking=True)
     age = fields.Integer('Age')
@@ -13,11 +13,4 @@ class HospitalDoctor(models.Model):
         ('female', 'Female')
     ], string='Gender')
     note = fields.Text('Description', tracking=True)
-    ref = fields.Char(default="New", readonly=True, string="Sequence Code")
     img_doctor = fields.Binary('Photo Doctor')
-
-    @api.model
-    def create(self, vals):
-        vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.doctor')
-        res = super(HospitalDoctor, self).create(vals)
-        return res

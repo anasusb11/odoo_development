@@ -17,6 +17,7 @@
                         <field name="name"/>
                     </h1>
                     <group>
+                        <field name="doctor_id" />
                         <field name="patient_id" />
                         <field name="age" />
                         <field name="gender" />
@@ -41,7 +42,7 @@
         <field name="name">hospital.appointment.view.tree</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree multi_edit="1">
                 <field name="name" />
                 <field name="patient_id" />
                 <field name="date_appointment" />

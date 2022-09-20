@@ -4,8 +4,9 @@ class HospitalPatient(models.Model):
     _name = 'hospital.patient'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Hospital Patient'
-    
-
+    _rec_name = 'name'
+    _order = 'name ASC'
+        
     partner_id = fields.Many2one('res.partner', string='Partner')
     name = fields.Char('Name', required=True, tracking=True)
     age = fields.Integer('Age')

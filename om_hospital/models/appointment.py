@@ -5,7 +5,7 @@ class HospitalAppointment(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Hospital Appointment'
     
-
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
     patient_id = fields.Many2one('hospital.patient', string='Patient')
     name = fields.Char('Order Reference', required=True, readonly=True, default="New")
     note = fields.Text('Description', tracking=True)
@@ -21,6 +21,7 @@ class HospitalAppointment(models.Model):
         ('male', 'Male'),
         ('female', 'Female')
     ], string='Gender')
+    
     @api.model
     def create(self, vals):
         if not vals.get('note'):
