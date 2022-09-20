@@ -1,3 +1,4 @@
+from mailbox import linesep
 from odoo import api, fields, models
 
 class HospitalAppointment(models.Model):
@@ -8,6 +9,9 @@ class HospitalAppointment(models.Model):
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
     patient_id = fields.Many2one('hospital.patient', string='Patient')
     name = fields.Char('Order Reference', required=True, readonly=True, default="New")
+    prescription_line = fields.One2many('appointment.prescription.lines', 'appointment_id', string='Doctor Prescription')
+    medicine_line = fields.One2many('appointment.medicine.lines', 'appointment_id', string='Medicine Lines')
+    info_line = fields.One2many('appointment.info.lines', 'appointment_id', string='Other Information')
     note = fields.Text('Description', tracking=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -52,3 +56,24 @@ class HospitalAppointment(models.Model):
 
     def action_done(self):
         self.write ({'state' : 'done'})
+
+class AppointmentPrescriptionLines(models.Model):
+    _name = 'appointment.prescription.lines'
+    _description = 'Appointment Prescription Lines'
+
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment')
+    prescription = fields.Text('Prescription')
+class AppointmentMedicineLines(models.Model):
+    _name = 'appointment.medicine.lines'
+    _description = 'Appointment Medicine Lines'
+
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment')
+    name = fields.Char('Name')
+    qty = fields.Integer('Quantity')
+
+class AppointmentInfoLines(models.Model):
+    _name = 'appointment.info.lines'
+    _description = 'Other Info Lines'
+
+    appointment_id = fields.Many2one('hospital.appointment')
+    note = fields.Text('Notes')

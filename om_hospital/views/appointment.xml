@@ -27,6 +27,30 @@
                         <field name="date_checkup" />
                         <field name="note"/>
                     </group>
+                    <notebook>
+                        <page string="Doctor Prescription">
+                            <field name="prescription_line">
+                                <tree>
+                                    <field name="prescription" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Medicine">
+                            <field name="medicine_line">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="qty" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Other Information">
+                            <field name="info_line">
+                                <tree>
+                                    <field name="note" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="o_attachment_preview"/>
                 <div class="oe_chatter">
