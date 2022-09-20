@@ -1,5 +1,5 @@
-from mailbox import linesep
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError
 
 class HospitalAppointment(models.Model):
     _name = 'hospital.appointment'
@@ -30,6 +30,18 @@ class HospitalAppointment(models.Model):
         vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
         res = super(HospitalAppointment, self).create(vals)
         return res
+
+    def copy(self, default=None):
+        default = dict(default or {})
+        if 'name' not in default:
+            default['name'] = _("%s (Copy)") % self.name
+        return super(HospitalAppointment, self).copy(default=default)
+
+    def unlink(self):
+        for i in self:
+            if i.state != 'draft':
+                raise UserError(_('Just can delete appointment in status draft'))
+        return super().unlink()
 
     @api.model
     def default_get(self, fields):
