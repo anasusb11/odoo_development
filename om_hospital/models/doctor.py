@@ -36,3 +36,10 @@ class HospitalDoctor(models.Model):
         for rec in self:
             if rec.age == 0:
                 raise UserError(_("Age can't by zero "))
+
+    def name_get(self):
+        res = []
+        for rec in self:
+            name = "[00{}] - {}".format(rec.id, rec.name)
+            res.append((rec.id, name))
+        return res
