@@ -5,10 +5,10 @@
 
         <menuitem id="hospital_root" name="Hospital" sequence="10" web_icon="om_hospital,static/description/hospital.png"/>
         <menuitem id="patient_root" name="Patient" parent="hospital_root" sequence="5"/>
-        <menuitem id="doctor_root" name="Doctor" parent="hospital_root" sequence="15" action="doctor_action"/>
+        <menuitem id="doctor_root" name="Doctor" parent="hospital_root" sequence="10" action="doctor_action"/>
         <menuitem id="hospital_patient_menu" name="Patient" action="patient_action" parent="patient_root" sequence="10"/>
         <menuitem id="hospital_kids_menu" name="Kids" action="kids_action" parent="patient_root" sequence="15"/>
-        <menuitem id="appointment_root" name="Appointment" parent="hospital_root" sequence="10"/>
+        <menuitem id="appointment_root" name="Appointment" parent="hospital_root" sequence="15"/>
         <menuitem id="hospital_appointment_menu" name="Appointments" parent="appointment_root" action="appointment_action" sequence="10"/>
         <menuitem id="create_appointment_wizard" name="Create Appointment" parent="appointment_root" action="create_appointment_wizard_action" sequence="15"/>
 

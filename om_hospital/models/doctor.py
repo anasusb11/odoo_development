@@ -1,3 +1,4 @@
+from xml.dom import ValidationErr
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
@@ -23,8 +24,15 @@ class HospitalDoctor(models.Model):
             default['name'] = _("%s (Copy)") % self.name
         return super(HospitalDoctor, self).copy(default=default)
 
-    def unlink(self):
-        for i in self:
-            if i.state != 'draft':
-                raise UserError(_('Transaksi hanya bisa dihapus pada state Draft'))
-        return super().unlink()
+    @api.constrains('name')
+    def _check_name(self):
+        for rec in self:
+            doctor = self.env['hospital.doctor'].search([('name', '=', rec.name), ('id', '!=', rec.id)])
+            if doctor:
+                raise UserError(_("Name %s already Exists") % rec.name)
+
+    @api.constrains('age')
+    def _check_age(self):
+        for rec in self:
+            if rec.age == 0:
+                raise UserError(_("Age can't by zero "))
